@@ -16,17 +16,6 @@ class Form extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
-  submitRes = () => {
-    this.props.postResOnDOM({
-      id: 4,
-      name: this.state.name,
-      date: this.state.date,
-      time: this.state.time,
-      number: this.state.number
-      })
-    this.setState({id: '', name: '', date: '', time: '', number: ''})
-  }
-
   validateInputs = () => {
     if (!this.state.name || !this.state.date || !this.state.time || !this.state.number) {
       window.alert('Please enter all requested information')

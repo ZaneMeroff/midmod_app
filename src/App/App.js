@@ -21,7 +21,7 @@ class App extends Component {
       .then(data => this.setState({reservations: data}))
   }
 
-  postToAPI = (name, date, time, number ) => {
+  postToAPI = (name, date, time, number) => {
     const options = {
       method: 'POST',
       body: JSON.stringify({
