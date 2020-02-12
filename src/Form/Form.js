@@ -1,45 +1,71 @@
 import React, { Component } from 'react';
-import './Form.css'
 
 class Form extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      id: 1,
-      name: "Test Res",
-      date: "12/29",
-      time: "7:00",
-      number: 12
-      }
+      name: 'a',
+      date: 'a',
+      time: 'a',
+      number: 'a'
+    }
+  }
+
+  updateChange = event => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  submitRes = () => {
+    this.props.postResOnDOM({
+      id: 4,
+      name: this.state.name,
+      date: this.state.date,
+      time: this.state.time,
+      number: this.state.number
+      })
+    this.setState({id: '', name: '', date: '', time: '', number: ''})
   }
 
   render() {
     return (
-      <form>
+      <section>
         <input
           name='name'
-          value='name'
+          value={this.state.name}
+          onChange={this.updateChange}
           placeholder='name...'
+          type='text'
         />
         <input
           name='date'
-          value='date'
+          value={this.state.date}
+          onChange={this.updateChange}
           placeholder='date...'
+          type='text'
         />
         <input
           name='time'
-          value='time'
+          value={this.state.time}
+          onChange={this.updateChange}
           placeholder='time...'
+          type='text'
         />
         <input
           name='number'
-          value='number'
-          placeholder='number in party...'
+          value={this.state.number}
+          onChange={this.updateChange}
+          placeholder='number...'
+          type='number'
         />
-        <button>Make Reservation</button>
-      </form>
+        <button onClick={this.submitRes}>Submit Res!</button>
+      </section>
+
     )
+
   }
+
 }
+
+
 
 export default Form;
