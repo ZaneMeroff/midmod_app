@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import './Form.css'
 
 class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'a',
-      date: 'a',
-      time: 'a',
-      number: 'a'
+      name: '',
+      date: '',
+      time: '',
+      number: ''
     }
   }
 
@@ -24,6 +25,19 @@ class Form extends Component {
       number: this.state.number
       })
     this.setState({id: '', name: '', date: '', time: '', number: ''})
+  }
+
+  validateInputs = () => {
+    if (!this.state.name || !this.state.date || !this.state.time || !this.state.number) {
+      window.alert('Please enter all requested information')
+    } else {
+      this.props.postToAPI(this.state.name, this.state.date, this.state.time, this.state.number)
+      this.clearInputs()
+    }
+  }
+
+  clearInputs = () => {
+    this.setState({name: '', date: '', time: '', number: ''})
   }
 
   render() {
@@ -57,15 +71,10 @@ class Form extends Component {
           placeholder='number...'
           type='number'
         />
-        <button onClick={this.submitRes}>Submit Res!</button>
+        <button onClick={this.validateInputs}>Submit Res!</button>
       </section>
-
     )
-
   }
-
 }
-
-
 
 export default Form;

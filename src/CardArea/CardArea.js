@@ -16,7 +16,7 @@ const CardArea = props => {
     )})
 
   return (
-    <div id='card-container'>
+    <div id='card-area'>
       {cards}
     </div>
   )

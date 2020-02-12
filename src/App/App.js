@@ -7,14 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      reservations:
-        [{
-          id: 1,
-          name: "Test Res",
-          date: "12/29",
-          time: "7:00",
-          number: 12
-        }]
+      reservations: [ {} ]
     }
   }
 
@@ -28,12 +21,29 @@ class App extends Component {
       .then(data => this.setState({reservations: data}))
   }
 
+  postToAPI = (name, date, time, number ) => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        id: this.state.reservations.length + 1,
+        name: name,
+        date: date,
+        time: time,
+        number: number
+      }),
+      headers: {'Content-Type': 'application/json'}
+    }
+    fetch('http://localhost:3001/api/v1/reservations', options)
+      .then(response => response.json())
+      .then(newRes => this.setState({reservations: [...this.state.reservations, newRes]}))
+    }
+
   render() {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
-          <Form postResOnDOM={this.postResOnDOM} res={this.state.reservations}/>
+          <Form postToAPI={this.postToAPI} res={this.state.reservations}/>
         </div>
         <div className='resy-container'>
           <CardArea cards={this.state.reservations} />
