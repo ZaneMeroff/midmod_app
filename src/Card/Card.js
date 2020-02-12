@@ -4,13 +4,14 @@ import './Card.css'
 const Card = props => {
 
   return (
-    <article>
-      <h4>Name: </h4>
-      <h4>Date: </h4>
-      <h4>Time: </h4>
-      <h4>PartySize: </h4>
-      <p>ID: </p>
-    </article
+    <div id='card'>
+      <h4>Name: {props.name}</h4>
+      <h4>Date: {props.date}</h4>
+      <h4>Time: {props.time}</h4>
+      <h4>Size of Party: {props.number}</h4>
+      <h5>id: {props.id}</h5>
+      <button>cancel</button>
+    </div>
   )
 
 }
