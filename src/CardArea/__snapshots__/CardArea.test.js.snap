@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match snapshot 1`] = `
+<div
+  id="card-area"
+>
+  <Card
+    date="fakeDate"
+    id="fakeId"
+    name="fakeName"
+    number="fakeNumber"
+    time="fakeTime"
+  />
+</div>
+`;

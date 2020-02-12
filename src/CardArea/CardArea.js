@@ -5,6 +5,7 @@ import './CardArea.css'
 const CardArea = props => {
 
   const cards = props.cards.map(res => {
+
     return (
       <Card
         name={res.name}
@@ -22,9 +23,5 @@ const CardArea = props => {
   )
 
 }
-
-
-
-
 
 export default CardArea;
