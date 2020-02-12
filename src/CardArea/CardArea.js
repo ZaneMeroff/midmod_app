@@ -4,13 +4,27 @@ import './CardArea.css'
 
 const CardArea = props => {
 
+  const cards = props.cards.map(res => {
+    return (
+      <Card
+        name={res.name}
+        date={res.date}
+        time={res.time}
+        number={res.number}
+        id={res.id}
+      />
+    )})
 
   return (
-    <section>
-      
-    </section>
+    <div id='card-container'>
+      {cards}
+    </div>
   )
 
 }
+
+
+
+
 
 export default CardArea;
